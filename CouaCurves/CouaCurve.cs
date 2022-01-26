@@ -5,8 +5,8 @@ namespace CouaCurves
     using CouaFloat = System.Single;
     public struct CouaVector2
     {
-        internal CouaFloat x;
-        internal CouaFloat y;
+        public CouaFloat x;
+        public CouaFloat y;
 
         public CouaVector2(CouaFloat x, CouaFloat y)
         {
@@ -42,7 +42,52 @@ namespace CouaCurves
     {
         CouaVector2 pointA, pointB, pointC, pointD;
 
+        public CouaCurve()
+        {
+            pointA = new CouaVector2(0f, 0f);
+            pointB = new CouaVector2(0.33f, 0f);
+            pointC = new CouaVector2(0.66f, 0f);
+            pointD = new CouaVector2(1f, 0f);
+        }
+        public void SetPointAValue(CouaFloat v)
+        {
+            pointA.y = v;
+        }
+        public void SetPointBValue(CouaFloat v)
+        {
+            pointB.y = v;
+        }
+        public void SetPointCValue(CouaFloat v)
+        {
+            pointC.y = v;
+        }
+        public void SetPointDValue(CouaFloat v)
+        {
+            pointD.y = v;
+        }
+        public void SetPointBPosition(CouaFloat p)
+        {
+            pointB.x = p;
+        }
+        public void SetPointCPosition(CouaFloat p)
+        {
+            pointC.x = p;
+        }
+        public float EvaluateY(float t)
+        {
+            CouaFloat[] p = new CouaFloat[4] { pointA.y, pointB.y, pointC.y, pointD.y };
+            CouaFloat[] r1 = new CouaFloat[3];
+            CouaFloat[] r2 = new CouaFloat[2];
 
-
+            for (int i = 1; i < p.Length-1; i++)
+            {
+                r1[i - 1] = (p[i - 1] + (p[i] - p[i - 1])) * t;
+            }
+            for (int i = 1; i < r1.Length - 1; i++)
+            {
+                r2[i - 1] = (p[i - 1] + (p[i] - p[i - 1])) * t;
+            }
+            return (r2[0] + (r2[1] - r2[0])) * t;
+        }
     }
 }
