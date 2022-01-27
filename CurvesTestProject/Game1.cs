@@ -62,8 +62,6 @@ namespace CurvesTestProject
         float timer;
         float maxTimer;
 
-
-
         public Game1()
         {
             graphics = new GraphicsDeviceManager(this);
