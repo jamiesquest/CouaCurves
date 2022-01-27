@@ -36,8 +36,6 @@ namespace CouaCurves
         public static CouaVector2 One { get { return new CouaVector2(1f, 1f); } }
     }
 
-
-
     public class CouaCurve
     {
         CouaVector2 pointA, pointB, pointC, pointD;
@@ -75,19 +73,28 @@ namespace CouaCurves
         }
         public float EvaluateY(float t)
         {
-            CouaFloat[] p = new CouaFloat[4] { pointA.y, pointB.y, pointC.y, pointD.y };
-            CouaFloat[] r1 = new CouaFloat[3];
-            CouaFloat[] r2 = new CouaFloat[2];
 
-            for (int i = 1; i < p.Length-1; i++)
-            {
-                r1[i - 1] = (p[i - 1] + (p[i] - p[i - 1])) * t;
-            }
-            for (int i = 1; i < r1.Length - 1; i++)
-            {
-                r2[i - 1] = (p[i - 1] + (p[i] - p[i - 1])) * t;
-            }
-            return (r2[0] + (r2[1] - r2[0])) * t;
+
+            float omt = 1 - t;
+            float eval = omt * (omt * (omt * pointA.y + t * pointB.y) + t * (omt * pointB.y + t * pointC.y)) + t * (omt * (omt * pointB.y + t * pointC.y) + t * (omt * pointC.y + t * pointD.y));
+            return eval;
+            //float eval = (1 - t) * ((1 - t) * ((1 - t) * pointA.y + t * pointB.y) + t * ((1 - t) * pointB.y + t * pointC.y)) + t * ((1 - t) * ((1 - t) * pointB.y + t * pointC.y) + t * ((1 - t) * pointC.y + t * pointD.y));
+
+            #region Old
+            //CouaFloat[] p = new CouaFloat[4] { pointA.y, pointB.y, pointC.y, pointD.y };
+            //CouaFloat[] r1 = new CouaFloat[3];
+            //CouaFloat[] r2 = new CouaFloat[2];
+
+            //for (int i = 1; i < p.Length-1; i++)
+            //{
+            //    r1[i - 1] = (p[i - 1] + (p[i] - p[i - 1])) * t;
+            //}
+            //for (int i = 1; i < r1.Length - 1; i++)
+            //{
+            //    r2[i - 1] = (p[i - 1] + (p[i] - p[i - 1])) * t;
+            //}
+            //return (r2[0] + (r2[1] - r2[0])) * t;
+            #endregion
         }
     }
 }
