@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace CouaCurves
+﻿namespace CouaCurves
 {
     using CouaFloat = System.Single;
     public struct CouaVector2
