@@ -103,8 +103,6 @@ namespace CouaCurves
         //}
         public float EvaluateY(float t)
         {
-
-
             float omt = 1 - t;
             float eval = omt * (omt * (omt * pointA.y + t * pointB.y) + t * (omt * pointB.y + t * pointC.y)) + t * (omt * (omt * pointB.y + t * pointC.y) + t * (omt * pointC.y + t * pointD.y));
             return eval;
