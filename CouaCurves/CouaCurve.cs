@@ -36,11 +36,11 @@ namespace CouaCurves
         public static CouaVector2 One { get { return new CouaVector2(1f, 1f); } }
     }
 
-    public class CouaCurve
+    public class CouaBezier
     {
         CouaVector2 pointA, pointB, pointC, pointD;
 
-        public CouaCurve()
+        public CouaBezier()
         {
             pointA = new CouaVector2(0f, 0f);
             pointB = new CouaVector2(0.33f, 0f);
@@ -63,6 +63,10 @@ namespace CouaCurves
         {
             pointD.y = v;
         }
+        public void SetPointAPosition(CouaFloat p)
+        {
+            pointA.x = p;
+        }
         public void SetPointBPosition(CouaFloat p)
         {
             pointB.x = p;
@@ -70,6 +74,10 @@ namespace CouaCurves
         public void SetPointCPosition(CouaFloat p)
         {
             pointC.x = p;
+        }
+        public void SetPointDPosition(CouaFloat p)
+        {
+            pointD.x = p;
         }
         public float EvaluateY(float t)
         {
@@ -96,5 +104,21 @@ namespace CouaCurves
             //return (r2[0] + (r2[1] - r2[0])) * t;
             #endregion
         }
+        public float EvaluateX(float t)
+        {
+            float omt = 1 - t;
+            float eval = omt * (omt * (omt * pointA.x + t * pointB.x) + t * (omt * pointB.x + t * pointC.x)) + t * (omt * (omt * pointB.x + t * pointC.x) + t * (omt * pointC.x + t * pointD.x));
+            return eval;
+        }
+
+        public CouaVector2 EvaluateCoords(float t)
+        {
+            float omt = 1 - t;
+            float evalX = omt * (omt * (omt * pointA.x + t * pointB.x) + t * (omt * pointB.x + t * pointC.x)) + t * (omt * (omt * pointB.x + t * pointC.x) + t * (omt * pointC.x + t * pointD.x));
+            float evalY = omt * (omt * (omt * pointA.y + t * pointB.y) + t * (omt * pointB.y + t * pointC.y)) + t * (omt * (omt * pointB.y + t * pointC.y) + t * (omt * pointC.y + t * pointD.y));
+            return new CouaVector2(evalX, evalY);
+
+        }
+
     }
 }
