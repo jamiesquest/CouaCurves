@@ -117,7 +117,7 @@ namespace CouaCurves
             float evalX = omt * (omt * (omt * pointA.x + t * pointB.x) + t * (omt * pointB.x + t * pointC.x)) + t * (omt * (omt * pointB.x + t * pointC.x) + t * (omt * pointC.x + t * pointD.x));
             float evalY = omt * (omt * (omt * pointA.y + t * pointB.y) + t * (omt * pointB.y + t * pointC.y)) + t * (omt * (omt * pointB.y + t * pointC.y) + t * (omt * pointC.y + t * pointD.y));
             return new CouaVector2(evalX, evalY);
-
+            
         }
 
     }
