@@ -47,38 +47,60 @@ namespace CouaCurves
             pointC = new CouaVector2(0.66f, 0f);
             pointD = new CouaVector2(1f, 0f);
         }
-        public void SetPointAValue(CouaFloat v)
+
+        public void SetPointA(CouaFloat position, CouaFloat value)
         {
-            pointA.y = v;
+            pointA.x = position;
+            pointA.y = value;
         }
-        public void SetPointBValue(CouaFloat v)
+        public void SetPointB(CouaFloat position, CouaFloat value)
         {
-            pointB.y = v;
+            pointB.x = position;
+            pointB.y = value;
         }
-        public void SetPointCValue(CouaFloat v)
+        public void SetPointC(CouaFloat position, CouaFloat value)
         {
-            pointC.y = v;
+            pointC.x = position;
+            pointC.y = value;
         }
-        public void SetPointDValue(CouaFloat v)
+        public void SetPointD(CouaFloat position, CouaFloat value)
         {
-            pointD.y = v;
+            pointD.x = position;
+            pointD.y = value;
         }
-        public void SetPointAPosition(CouaFloat p)
-        {
-            pointA.x = p;
-        }
-        public void SetPointBPosition(CouaFloat p)
-        {
-            pointB.x = p;
-        }
-        public void SetPointCPosition(CouaFloat p)
-        {
-            pointC.x = p;
-        }
-        public void SetPointDPosition(CouaFloat p)
-        {
-            pointD.x = p;
-        }
+
+        //public void SetPointAValue(CouaFloat v)
+        //{
+        //    pointA.y = v;
+        //}
+        //public void SetPointBValue(CouaFloat v)
+        //{
+        //    pointB.y = v;
+        //}
+        //public void SetPointCValue(CouaFloat v)
+        //{
+        //    pointC.y = v;
+        //}
+        //public void SetPointDValue(CouaFloat v)
+        //{
+        //    pointD.y = v;
+        //}
+        //public void SetPointAPosition(CouaFloat p)
+        //{
+        //    pointA.x = p;
+        //}
+        //public void SetPointBPosition(CouaFloat p)
+        //{
+        //    pointB.x = p;
+        //}
+        //public void SetPointCPosition(CouaFloat p)
+        //{
+        //    pointC.x = p;
+        //}
+        //public void SetPointDPosition(CouaFloat p)
+        //{
+        //    pointD.x = p;
+        //}
         public float EvaluateY(float t)
         {
 
