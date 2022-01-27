@@ -47,6 +47,20 @@ namespace CouaCurves
             pointC = new CouaVector2(0.66f, 0f);
             pointD = new CouaVector2(1f, 0f);
         }
+        public CouaBezier(CouaVector2 pA, CouaVector2 pB, CouaVector2 pC, CouaVector2 pD)
+        {
+            pointA = pA;
+            pointB = pB;
+            pointC = pC;
+            pointD = pD;
+        }
+        public CouaBezier(CouaFloat pA, CouaFloat vA, CouaFloat pB, CouaFloat vB, CouaFloat pC, CouaFloat vC, CouaFloat pD, CouaFloat vD)
+        {
+            pointA = new CouaVector2(pA, vA);
+            pointB = new CouaVector2(pB, vB);
+            pointC = new CouaVector2(pC, vC);
+            pointD = new CouaVector2(pD, vD);
+        }
 
         public void SetPointA(CouaFloat position, CouaFloat value)
         {
@@ -68,63 +82,11 @@ namespace CouaCurves
             pointD.x = position;
             pointD.y = value;
         }
-
-        //public void SetPointAValue(CouaFloat v)
-        //{
-        //    pointA.y = v;
-        //}
-        //public void SetPointBValue(CouaFloat v)
-        //{
-        //    pointB.y = v;
-        //}
-        //public void SetPointCValue(CouaFloat v)
-        //{
-        //    pointC.y = v;
-        //}
-        //public void SetPointDValue(CouaFloat v)
-        //{
-        //    pointD.y = v;
-        //}
-        //public void SetPointAPosition(CouaFloat p)
-        //{
-        //    pointA.x = p;
-        //}
-        //public void SetPointBPosition(CouaFloat p)
-        //{
-        //    pointB.x = p;
-        //}
-        //public void SetPointCPosition(CouaFloat p)
-        //{
-        //    pointC.x = p;
-        //}
-        //public void SetPointDPosition(CouaFloat p)
-        //{
-        //    pointD.x = p;
-        //}
         public float EvaluateY(float t)
         {
-
-
             float omt = 1 - t;
             float eval = omt * (omt * (omt * pointA.y + t * pointB.y) + t * (omt * pointB.y + t * pointC.y)) + t * (omt * (omt * pointB.y + t * pointC.y) + t * (omt * pointC.y + t * pointD.y));
             return eval;
-            //float eval = (1 - t) * ((1 - t) * ((1 - t) * pointA.y + t * pointB.y) + t * ((1 - t) * pointB.y + t * pointC.y)) + t * ((1 - t) * ((1 - t) * pointB.y + t * pointC.y) + t * ((1 - t) * pointC.y + t * pointD.y));
-
-            #region Old
-            //CouaFloat[] p = new CouaFloat[4] { pointA.y, pointB.y, pointC.y, pointD.y };
-            //CouaFloat[] r1 = new CouaFloat[3];
-            //CouaFloat[] r2 = new CouaFloat[2];
-
-            //for (int i = 1; i < p.Length-1; i++)
-            //{
-            //    r1[i - 1] = (p[i - 1] + (p[i] - p[i - 1])) * t;
-            //}
-            //for (int i = 1; i < r1.Length - 1; i++)
-            //{
-            //    r2[i - 1] = (p[i - 1] + (p[i] - p[i - 1])) * t;
-            //}
-            //return (r2[0] + (r2[1] - r2[0])) * t;
-            #endregion
         }
         public float EvaluateX(float t)
         {
@@ -139,8 +101,11 @@ namespace CouaCurves
             float evalX = omt * (omt * (omt * pointA.x + t * pointB.x) + t * (omt * pointB.x + t * pointC.x)) + t * (omt * (omt * pointB.x + t * pointC.x) + t * (omt * pointC.x + t * pointD.x));
             float evalY = omt * (omt * (omt * pointA.y + t * pointB.y) + t * (omt * pointB.y + t * pointC.y)) + t * (omt * (omt * pointB.y + t * pointC.y) + t * (omt * pointC.y + t * pointD.y));
             return new CouaVector2(evalX, evalY);
-            
         }
 
+        public static CouaBezier SineCurve { get { return new CouaBezier(0f, 0f, 0f, 0.6f, 0.4f, 1f, 1f, 1f); } }
+        public static CouaBezier InverseSineCurve { get { return new CouaBezier(0f, 0f, 0.6f, 0f, 1f, 0.4f, 1f, 1f); } }
+        public static CouaBezier SCurve { get { return new CouaBezier(0f, 0f, 0.8f, 0.2f, 0.2f, 0.8f, 1f, 1f); } }
+        public static CouaBezier HillCurve { get { return new CouaBezier(0f, 0f, 0.2f, 1.3f, 0.8f, 1.3f, 0f, 0f); } }
     }
 }
