@@ -1,5 +1,7 @@
-# CouaCurves
 ![1](/Logos/Coua1.png)
+
+# CouaCurves
+
 Coua Curves is a basic C# library for for quickly generating curves and evaluating them. 
 
 ## About
@@ -12,7 +14,7 @@ A simple struct for holding X and Y values on a graph.
 
 ### The "CouaBezier" class
 
-A class that holds 4 control points that will form a cubic bezier curve.  These points can be set through the "SetPointA(), SetPointB() ..." methods. The parameter "position" refers to the point's value on the X axis.  Paramter "value" refers to the point's value on the Y axis.
+A class that holds 4 control points that will form a cubic bezier curve.  The points can be initialized in the constructor via CouaVector2s or floats.  These points can also be set through the "SetPointA(), SetPointB() ..." methods. The parameter "position" refers to the point's value on the X axis.  Paramter "value" refers to the point's value on the Y axis.
 
 #### EvaluateCoords()
 
