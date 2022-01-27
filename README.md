@@ -27,3 +27,23 @@ Evaluates the curve at _t_ and returns it's Y position.  This is used most often
 #### EvaluateX()
 
 Evaluates the curve at _t_ and returns it's X position.  
+
+## Build Instructions
+
+1. Clone the repository.
+2. Navigate to the repository using the Visual Studio Developer Command Prompt.
+3. Run: 
+
+```
+dotnet restore
+```
+
+4. Next, run:
+
+```
+devenv CouaCurves.sln /Build Release
+```
+
+You can also build for Debug. I guess...
+
+5. Use the resulting .dll in any of your C# projects.
