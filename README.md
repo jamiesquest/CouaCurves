@@ -1,4 +1,4 @@
-![1](/Logos/Coua1.png)
+![1](/Logos/Coua2.png)
 
 # CouaCurves
 
