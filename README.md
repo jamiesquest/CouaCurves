@@ -31,7 +31,7 @@ Evaluates the curve at _t_ and returns it's X position.
 ## Build Instructions
 
 1. Clone the repository.
-2. Navigate to the repository using the Visual Studio Developer Command Prompt.
+2. Navigate to the repository using the Command Prompt.
 3. Build for Debug or Release: 
 
 ```
